@@ -1,3 +1,4 @@
+<img width="1498" height="812" alt="QGIS" src="https://github.com/user-attachments/assets/5065531a-02e3-425d-8b3c-dcfdd0385977" />
 # CBS Tabanlı Billboard Yer Seçimi ve Mekansal Optimizasyon
 
 Kadıköy ilçesinde reklam panosu yer seçimini bir mekansal karar destek
