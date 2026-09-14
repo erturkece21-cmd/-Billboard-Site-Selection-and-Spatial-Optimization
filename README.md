@@ -25,9 +25,23 @@ edilmemiştir. Yol ağı: OpenStreetMap / Geofabrik (ODbL).
 * `analiz_sorgulari.sql`: Nüfus dağıtımı, aday nokta üretimi, açgözlü küme kaplama algoritması ve yön/görünürlük fonksiyonlarını içeren temel SQL komutları.
 * `QGIS.webp`: Analiz sonucunda elde edilen optimum konumların QGIS üzerindeki kartografik sunumu.
 
-## 📂 Proje Yapısı
+## ⚙️ Proje İş Akışı (Workflow)
 
 ```text
-analiz_sorgulari.sql      Nüfus dağıtımı, optimizasyon algoritması ve görünürlük fonksiyonları
-QGIS.webp                 Optimum konumların QGIS üzerindeki kartografik sunumu
-README.md                 Proje özeti, metodoloji ve analiz bulguları
+📦 Kadikoy-Billboard-Optimization
+├── 1. Veri Tanıma ve Hazırlık
+│   ├── Kurum ve OSM (Geofabrik) verilerinin kalite denetimi ve entegrasyonu
+│   └── Mekansal analizler için EPSG:5254 (TM30) metrik koordinat sistemine dönüşüm
+├── 2. Dasimetrik Nüfus Modellemesi
+│   └── Kaba mahalle nüfuslarının adres (kapı) noktalarına oransal olarak dağıtılması
+├── 3. Çözüm Uzayı ve Ağırlıklandırma
+│   ├── Yol ekseni üzerinde 10 metre aralıklarla 25.350 aday konum üretimi (ST_Segmentize)
+│   └── Yol hiyerarşisine göre adaylara hareketlilik çarpanı (1.2, 1.5, 2.0) atanması
+├── 4. Mekansal Optimizasyon
+│   ├── Açgözlü Küme Kaplama (Greedy Set Cover) algoritmasının veritabanı içinde çalıştırılması
+│   └── İstatistiksel (mükerrer sayım) ve fiziksel (250m kısıtı) yamyamlık hatalarının engellenmesi
+├── 5. Doğrulama ve İleri Analizler
+│   ├── ST_LineSubstring ve 120° görüş açısı ile gerçekçi görünürlük ve bina engeli hesabı
+│   ├── Parametre duyarlılığı, doygunluk eğrisi ve Voronoi (hinterland) poligon analizleri
+└── 6. Kartografya ve Karar Destek
+    └── Optimum lokasyonların QGIS'te sembolojik sunumu ve karar destek tablolarının üretilmesi
