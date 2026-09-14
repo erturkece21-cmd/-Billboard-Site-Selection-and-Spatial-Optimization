@@ -5,7 +5,6 @@ Kadıköy ilçesinde reklam panosu yer seçimini bir mekansal karar destek
 problemi olarak modelleyen, tamamı veri tabanı içinde çözülen analiz.
 Netcad Yazılım A.Ş. zorunlu yaz stajı kapsamında geliştirildi (2026).
 
-![QGIS Optimizasyon Çıktısı](QGIS.webp)
 
 ## 📌 Yaklaşım
 - Mahalle nüfusu, adres (kapı) noktaları kullanılarak **dasimetrik** yöntemle adres düzeyine indirgendi.
