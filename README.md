@@ -23,3 +23,5 @@ PostgreSQL 18.6 · PostGIS 3.6.2 · GDAL 3.9.2 · QGIS · EPSG:5254
 ## Veri
 Kurum verisi (adres, bina, mahalle nüfusu) gizlilik nedeniyle repoya dahil
 edilmemiştir. Yol ağı: OpenStreetMap / Geofabrik (ODbL).
+
+![QGIS Optimizasyon Çıktısı](QGIS.webp)
