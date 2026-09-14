@@ -1,4 +1,4 @@
--- 1. VERİ HAZIRLIĞI VE KOORDİNAT DÖNÜŞÜMÜ[cite: 8]
+-- 1. VERİ HAZIRLIĞI VE KOORDİNAT DÖNÜŞÜMÜ
 ALTER TABLE yapi ADD COLUMN geom_metric geometry(MultiPolygon, 5254);
 UPDATE yapi SET geom_metric = ST_Multi(ST_MakeValid(ST_SetSRID(poly, 5254)));
 CREATE INDEX ON yapi USING GIST (geom_metric);
@@ -18,7 +18,7 @@ ALTER TABLE osm_yol ADD CONSTRAINT pk_osm_yol PRIMARY KEY (ogc_fid);
 CREATE INDEX ON osm_yol USING GIST (geom_metric);
 ANALYZE osm_yol;
 
--- 2. DASİMETRİK NÜFUS DAĞITIMI[cite: 8]
+-- 2. DASİMETRİK NÜFUS DAĞITIMI
 ALTER TABLE geokapi ADD COLUMN mahalle_id INT;
 ALTER TABLE geokapi ADD COLUMN nufus_yuku NUMERIC;
 
@@ -37,7 +37,7 @@ FROM aktar_geomahalle m
 JOIN kapi_sayilari ks ON m.tid = ks.mahalle_id
 WHERE k.mahalle_id = m.tid;
 
--- 3. ÇÖZÜM UZAYI VE ADAY NOKTALAR[cite: 8]
+-- 3. ÇÖZÜM UZAYI VE ADAY NOKTALAR
 CREATE TABLE aday_noktalar AS
 WITH parcali_yollar AS (
     SELECT (ST_DumpPoints(ST_Segmentize(geom_metric, 10))).geom AS geom_metric
@@ -49,7 +49,7 @@ CREATE INDEX idx_aday_noktalar_geom ON aday_noktalar USING GIST (geom_metric);
 
 ALTER TABLE aday_noktalar ADD COLUMN IF NOT EXISTS trafik_skoru NUMERIC DEFAULT 1.0;
 
--- 4. OPTİMİZASYON ALGORİTMASI (AÇGÖZLÜ KÜME KAPLAMA)[cite: 8]
+-- 4. OPTİMİZASYON ALGORİTMASI (AÇGÖZLÜ KÜME KAPLAMA)
 CREATE OR REPLACE FUNCTION acgozlu_trafikli_secim(
     hedef_pano INT, min_mesafe FLOAT, etki_yaricapi FLOAT)
 RETURNS TABLE (sira INT, secilen_aday_id INT, yaya_nufus NUMERIC,
@@ -102,7 +102,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- 5. YÖN VE GÖRÜNÜRLÜK FONKSİYONLARI[cite: 8]
+-- 5. YÖN VE GÖRÜNÜRLÜK FONKSİYONLARI
 CREATE OR REPLACE FUNCTION yonlu_kapsama(
     pano geometry, yon numeric, yaricap numeric, aci_genisligi numeric
 ) RETURNS numeric AS $$
@@ -134,7 +134,7 @@ CREATE OR REPLACE FUNCTION gorunur_kapsama(
       );
 $$ LANGUAGE sql STABLE;
 
--- 6. KARAR DESTEK TABLOSU (QGIS GÖRÜNÜMÜ)[cite: 8]
+-- 6. KARAR DESTEK TABLOSU (QGIS GÖRÜNÜMÜ)
 CREATE VIEW v_pano_detay AS
 SELECT s.sira,
     CASE
