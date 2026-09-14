@@ -24,3 +24,10 @@ edilmemiştir. Yol ağı: OpenStreetMap / Geofabrik (ODbL).
 
 * `analiz_sorgulari.sql`: Nüfus dağıtımı, aday nokta üretimi, açgözlü küme kaplama algoritması ve yön/görünürlük fonksiyonlarını içeren temel SQL komutları.
 * `QGIS.webp`: Analiz sonucunda elde edilen optimum konumların QGIS üzerindeki kartografik sunumu.
+
+## 📂 Proje Yapısı
+
+```text
+analiz_sorgulari.sql      Nüfus dağıtımı, optimizasyon algoritması ve görünürlük fonksiyonları
+QGIS.webp                 Optimum konumların QGIS üzerindeki kartografik sunumu
+README.md                 Proje özeti, metodoloji ve analiz bulguları
