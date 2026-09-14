@@ -22,7 +22,7 @@ PostgreSQL 18.6 · PostGIS 3.6.2 · GDAL 3.9.2 · QGIS · EPSG:5254
 Kurum verisi (adres, bina, mahalle nüfusu) gizlilik nedeniyle repoya dahil
 edilmemiştir. Yol ağı: OpenStreetMap / Geofabrik (ODbL).
 
-* `analiz_sorgulari.sql`: Nüfus dağıtımı, aday nokta üretimi, açgözlü küme kaplama algoritması ve yön/görünürlük fonksiyonlarını içeren temel SQL komutları.
+* `analiz_sorgulari.sql`: Nüfus dağıtımı, aday nokta üretimi, küme kaplama algoritması ve yön/görünürlük fonksiyonlarını içeren temel SQL komutları.
 * `QGIS.webp`: Analiz sonucunda elde edilen optimum konumların QGIS üzerindeki kartografik sunumu.
 
 ## ⚙️ Proje İş Akışı (Workflow)
